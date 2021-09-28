@@ -16,6 +16,10 @@ const SearchBarContainer = styled.section`
         border-bottom: solid #C32BAD 1px;
     }
 
+    .formBar:hover{
+        border-bottom: solid #C32BAD 2px;
+    }
+
     .inputBar{
         width:95%;
         border:none;

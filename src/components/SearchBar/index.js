@@ -15,7 +15,7 @@ export default function SearchBar(props){
     const goNext = () => {
         localStorage.setItem('bookName', value);
         setValue('')
-        history.push("/detail")
+        history.push("/books/detail")
     }
 
     return(
