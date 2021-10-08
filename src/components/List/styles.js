@@ -211,7 +211,7 @@ const ListContent = styled.section`
         font-size:12px;
         margin:auto;
         width: 100%;
-        height: 540px;
+        height: auto;
         max-width: 800px;
         max-height: 390px;
         
