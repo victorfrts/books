@@ -45,19 +45,25 @@ const ListContent = styled.section`
         min-width:210px;
         height: 220px;
         margin-top: 20px;
-        border-bottom: solid 1px #C32BAD;
     }
 
     .bookDetail:hover{
         cursor: pointer;
-        border-bottom: solid 2px #C32BAD;
+        .bookTitle{
+            border-bottom: solid 2px #C32BAD;
+        }
     }
 
     .bookTitle{   
         overflow: hidden;
         text-align:left; 
         white-space: nowrap;
-        text-overflow: ellipsis;   
+        text-overflow: ellipsis;  
+        border-bottom: solid 1px #C32BAD; 
+    }
+
+    .bookTitle:hover{
+        border-bottom: solid 2px #C32BAD;
     }
 
     .bookImage{
@@ -121,6 +127,16 @@ const ListContent = styled.section`
         border: 1px solid #F56FAD;
     }
 
+    @media screen and (max-width: 820px) {
+        .modal-content {
+            height: 90%;
+            width: 100%; 
+            background-color: #f1f1f1;
+            margin: 10% auto; 
+            border: 1px solid #F56FAD;
+        }
+    }
+
     .closeIcon{
         margin-top: 2px;
         margin-right: 2px;
@@ -150,12 +166,25 @@ const ListContent = styled.section`
         padding-left:10px;
         text-align:left;
         float:left;
-        width:560px;
+        width: 100%;
+        max-width:560px;
+        max-height: 220px;
         font-size:12px;
+        @media screen and (max-width: 768px) {
+            p{
+                overflow: hidden; 
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
     }
 
     .sectionTitle{
         font-size: 18px;
+        overflow: hidden;
+        text-align:left; 
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .sectionImg{
@@ -181,8 +210,10 @@ const ListContent = styled.section`
     .sectionResume{
         font-size:12px;
         margin:auto;
-        width: 800px;
-        height: 390px;
+        width: 100%;
+        height: 540px;
+        max-width: 800px;
+        max-height: 390px;
         
         overflow-y : scroll;
         scroll-behavior: smooth;
