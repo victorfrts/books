@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import ListContent from './styles'
 import fetchBookList from '../../services/fetchBookList'
 import fetchBookDetail from '../../services/fetchBookDetail'
-import {FaAngleLeft, FaAngleRight, FaAngleDoubleLeft, FaAngleDoubleRight, FaWindowClose, FaSpinner} from 'react-icons/fa'
+import {FaAngleLeft, FaAngleRight, FaAngleDoubleLeft, FaAngleDoubleRight, FaWindowClose, FaSpinner, FaRegStar, FaStar} from 'react-icons/fa'
 
 export default function List(){
     
@@ -12,6 +12,7 @@ export default function List(){
     const [pages,setPages] = React.useState('')
     const [books,setBooks] = React.useState([])
     const [viewBook, setViewbook] = React.useState('none')
+    const [favorites, setFavorites] = React.useState(JSON.parse(localStorage.getItem("favorites"))===null?[]:JSON.parse(localStorage.getItem("favorites")));
 
     const closeModal = (e) => {
         if(e.target.className === "modal"){
@@ -49,6 +50,31 @@ export default function List(){
         }
         fecth();
     },[page,value])
+
+    const addFav = (id,title,img) =>{
+        let array = favorites;
+        let addArray = true;
+        array.map((item) => {
+            if(item === id){
+                array.splice(array.indexOf(id),1)
+                addArray = false;
+            }
+            return array
+        });
+        if(addArray){
+            array.push(id); 
+        }
+        setFavorites([...array])
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+
+        var storage = localStorage.getItem('favBook'+id)
+        if(storage === null){
+            localStorage.setItem('favBook'+id, JSON.stringify([id,title,img]));
+        }
+        else{
+            localStorage.removeItem('favBook'+id);
+        }
+    }
 
     return(
         <ListContent>
@@ -89,7 +115,14 @@ export default function List(){
                                         '':
                                             <>
                                                 <img id={book.id} className="bookImage" alt="capa do livro" src={book.volumeInfo.imageLinks.thumbnail} onClick={e => getDetail(e)} />                                                
-                                                <p  id={book.id} className="bookTitle">{book.volumeInfo.title}</p>
+                                                <p  id={book.id} className="bookTitle">  
+                                                    {favorites.includes(book.id)?(
+                                                        <FaStar onClick={() => addFav(book.id,book.volumeInfo.title,book.volumeInfo.imageLinks.thumbnail)} style={{color:'gold'}}/>
+                                                    ):(
+                                                        <FaRegStar onClick={() => addFav(book.id,book.volumeInfo.title,book.volumeInfo.imageLinks.thumbnail)} style={{color:'gold'}}/>
+                                                    )}
+                                                    {book.volumeInfo.title}
+                                                </p>
                                             </>
                                         }
                                     </div>

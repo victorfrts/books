@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-const ListContent = styled.section`
-
+const FavoriteContent = styled.section`
+    
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -31,7 +31,7 @@ const ListContent = styled.section`
       }
     }
 
-    .bookList{
+    .favoriteList{
         margin-right: auto;
         display: grid;
         list-style: none;
@@ -40,21 +40,21 @@ const ListContent = styled.section`
                
     }
 
-    .bookDetail{
+    .favoriteDetail{
         width: 50%;
         min-width:210px;
         height: 220px;
         margin-top: 20px;
     }
 
-    .bookDetail:hover{
+    .favoriteDetail:hover{
         cursor: pointer;
-        .bookTitle{
+        .favoriteTitle{
             border-bottom: solid 2px #C32BAD;
         }
     }
 
-    .bookTitle{   
+    .favoriteTitle{   
         overflow: hidden;
         text-align:left; 
         white-space: nowrap;
@@ -62,21 +62,21 @@ const ListContent = styled.section`
         border-bottom: solid 1px #C32BAD; 
     }
 
-    .bookTitle:hover{
+    .favoriteTitle:hover{
         border-bottom: solid 2px #C32BAD;
     }
 
-    .bookImage{
+    .favoriteImage{
         height:190px;
         margin-right: auto;
         margin-left: auto;
     }
 
-    .bookPainel{
+    .favoritePainel{
         overflow-y : scroll;
         scroll-behavior: smooth;
-        height: 718px;
-        max-height: 718px;
+        height: 768px;
+        max-height: 768px;
 
         ::-webkit-scrollbar {
         width: 5px;
@@ -99,29 +99,6 @@ const ListContent = styled.section`
         background: #7027A0;
         border-radius: 10px;
         }
-    }
-
-    @media screen and (max-width: 768px) {
-            p{
-                overflow: hidden; 
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }
-        }
-
-    .favoritos{
-        margin-top:10px;
-        margin-left: -24px;
-        display: flex;
-        float: left;
-        font-size: 14px;
-    }
-
-    .pageControl{
-        font-size: 12px;
-        float:right;
-        margin-top:10px;
-        display:flex;
     }
 
     .modal{
@@ -267,9 +244,6 @@ const ListContent = styled.section`
         color: #7027A0;
     }
 
-    .arrowIcon:hover{
-        cursor: pointer;
-    }
-
 `
-export default ListContent
+
+export default FavoriteContent;
